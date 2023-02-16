@@ -1,25 +1,22 @@
+import { FC } from "react";
 import {
-  ListRenderItemInfo,
   Pressable,
   StyleSheet,
   Text,
-  View,
+  View
 } from "react-native";
-import { FC } from "react";
 
 interface IGoalItem {
-  itemData: ListRenderItemInfo<string>;
+  goalText: string;
+  id: string;
+  deleteGoalHandler: (id: string) => void;
 }
 
-const GoalItem: FC<IGoalItem> = ({ itemData }) => {
-  const onDeleteGoal = () => {
-    console.log(itemData.item);
-  };
-
+const GoalItem: FC<IGoalItem> = ({ goalText, id, deleteGoalHandler }) => {
   return (
-    <Pressable onPress={onDeleteGoal}>
+    <Pressable onPress={deleteGoalHandler.bind(this, id)}>
       <View style={styles.goalItem}>
-        <Text style={styles.goalText}>{itemData.item}</Text>
+        <Text style={styles.goalText}>{goalText}</Text>
       </View>
     </Pressable>
   );
