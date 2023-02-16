@@ -14,7 +14,7 @@ const GoalItem: FC<IGoalItem> = ({ goalText, id, deleteGoalHandler }) => {
         onPress={deleteGoalHandler.bind(this, id)}
         style={(pressed) => pressed && styles.pressedItem}
       >
-        <Text style={styles.goalText}>{id}</Text>
+        <Text style={styles.goalText}>{goalText}</Text>
       </Pressable>
     </View>
   );
