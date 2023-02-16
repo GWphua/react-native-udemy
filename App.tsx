@@ -1,5 +1,6 @@
+import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { FlatList, StyleSheet, View, Button } from "react-native";
+import { Button, FlatList, StyleSheet, Text, View } from "react-native";
 import GoalInput from "./components/GoalInput";
 import GoalItem from "./components/GoalItem";
 
@@ -32,32 +33,41 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      <Button
-        title="Add New Goal"
-        color="#5e0acc"
-        onPress={startAddGoalHandler}
-      />
-      <GoalInput
-        onAddGoal={onAddGoal}
-        showModal={modalIsVisible}
-        closeModal={endAddGoalHandler}
-      />
-      <View style={styles.goalsContainer}>
-        <FlatList
-          data={courseGoals}
-          renderItem={(itemData) => (
-            <GoalItem
-              goalText={itemData.item.text}
-              id={itemData.item.id}
-              deleteGoalHandler={deleteGoalHandler}
-            />
-          )}
-          alwaysBounceVertical={true}
-          keyExtractor={(item, index) => item.id.toString()}
+    <>
+      <StatusBar style="light" />
+      <View style={styles.container}>
+        <View style={styles.buttonContainer}>
+          <Button
+            title="Add New Goal"
+            color="#5e0acc"
+            onPress={startAddGoalHandler}
+          />
+        </View>
+
+        <GoalInput
+          onAddGoal={onAddGoal}
+          showModal={modalIsVisible}
+          closeModal={endAddGoalHandler}
         />
+        <View style={styles.goalsTitleContainer}>
+          <Text style={styles.goalsTitle}>Goals List</Text>
+        </View>
+        <View style={styles.goalsContainer}>
+          <FlatList
+            data={courseGoals}
+            renderItem={(itemData) => (
+              <GoalItem
+                goalText={itemData.item.text}
+                id={itemData.item.id}
+                deleteGoalHandler={deleteGoalHandler}
+              />
+            )}
+            alwaysBounceVertical={true}
+            keyExtractor={(item, index) => item.id.toString()}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
@@ -69,8 +79,24 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 16,
   },
-
+  buttonContainer: {
+    padding: 8,
+    borderWidth: 1,
+    borderColor: "#cccccc",
+    marginBottom: 25,
+  },
+  goalsTitleContainer: {
+    alignItems: "center",
+  },
+  goalsTitle: {
+    color: "white",
+    fontSize: 20,
+    paddingBottom: 8,
+  },
   goalsContainer: {
     flex: 5,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderColor: "#cccccc",
   },
 });
