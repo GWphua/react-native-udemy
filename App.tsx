@@ -28,15 +28,18 @@ export default function App() {
       </View>
       <View style={styles.goalsContainer}>
         {courseGoals.map((goal, index) => (
-          <Text key={index} style={styles.goalItem}>
-            {goal} {index}
-          </Text>
+          <View style={styles.goalItem} key={index}>
+            <Text style={styles.goalText}>
+              {goal} {index}
+            </Text>
+          </View>
         ))}
       </View>
     </View>
   );
 }
 
+// Styles do not cascade here!
 // Helps to clearly seperate styles with TSX code.
 const styles = StyleSheet.create({
   container: {
@@ -68,6 +71,8 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 6,
     backgroundColor: "#5e0acc",
+  },
+  goalText: {
     color: "white",
   },
 });
