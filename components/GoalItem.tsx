@@ -1,10 +1,5 @@
 import { FC } from "react";
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  View
-} from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 interface IGoalItem {
   goalText: string;
@@ -16,7 +11,7 @@ const GoalItem: FC<IGoalItem> = ({ goalText, id, deleteGoalHandler }) => {
   return (
     <Pressable onPress={deleteGoalHandler.bind(this, id)}>
       <View style={styles.goalItem}>
-        <Text style={styles.goalText}>{goalText}</Text>
+        <Text style={styles.goalText}>{id}</Text>
       </View>
     </Pressable>
   );

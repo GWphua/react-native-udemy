@@ -11,7 +11,7 @@ export default function App() {
   const onAddGoal = (goal: string) => {
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals,
-      { text: goal, id: Math.random.toString() },
+      { text: goal, id: Math.random().toString() },
     ]);
   };
 
@@ -27,7 +27,7 @@ export default function App() {
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}
-          renderItem={(itemData) => (     
+          renderItem={(itemData) => (
             <GoalItem
               goalText={itemData.item.text}
               id={itemData.item.id}
