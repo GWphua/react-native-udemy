@@ -1,4 +1,10 @@
-import { ListRenderItemInfo, StyleSheet, Text, View } from "react-native";
+import {
+  ListRenderItemInfo,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { FC } from "react";
 
 interface IGoalItem {
@@ -6,10 +12,16 @@ interface IGoalItem {
 }
 
 const GoalItem: FC<IGoalItem> = ({ itemData }) => {
+  const onDeleteGoal = () => {
+    console.log(itemData.item);
+  };
+
   return (
-    <View style={styles.goalItem}>
-      <Text style={styles.goalText}>{itemData.item}</Text>
-    </View>
+    <Pressable onPress={onDeleteGoal}>
+      <View style={styles.goalItem}>
+        <Text style={styles.goalText}>{itemData.item}</Text>
+      </View>
+    </Pressable>
   );
 };
 
