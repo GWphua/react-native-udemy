@@ -46,10 +46,10 @@ const GoalInput: FC<IGoalInput> = ({ showModal, onAddGoal, closeModal }) => {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title="Cancel" color="red" onPress={cancelAdding} />
+            <Button title="Cancel" color="#b180f0" onPress={cancelAdding} />
           </View>
           <View style={styles.button}>
-            <Button title="Add Goal" onPress={addGoalHandler} />
+            <Button title="Add Goal" color="#f31282" onPress={addGoalHandler} />
           </View>
         </View>
       </View>
@@ -72,10 +72,13 @@ const styles = StyleSheet.create({
   image: { width: 100, height: 100, margin: 20 },
   textInput: {
     borderWidth: 1,
-    borderColor: "#cccccc",
+    borderRadius: 6,
+    borderColor: "#e4d0ff",
+    backgroundColor: "#e4d0ff",
+    color: "#120428",
     width: "100%",
     marginRight: 8,
-    padding: 8,
+    padding: 16,
   },
   buttonContainer: {
     marginTop: 16,
